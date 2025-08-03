@@ -1,11 +1,19 @@
-
+import MainLayout from "./Layout/MainLayout";
+import HomePage from "./Pages/HomePage";
+import Ckeckout from "./Pages/Ckeckout";
+import PaymentPay from "./Pages/PaymentPay";
+import Success from "./Pages/Success";
 
 function App() {
   
 
   return (
     <>
-      <p className="text-xl text-center">Hello World</p>
+      <MainLayout />
+      <HomePage />
+      <Ckeckout />
+      <PaymentPay />
+      <Success />
     </>
   )
 }
