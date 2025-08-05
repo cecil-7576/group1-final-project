@@ -3,17 +3,21 @@ import HomePage from "./Pages/HomePage";
 import Ckeckout from "./Pages/Ckeckout";
 import PaymentPay from "./Pages/PaymentPay";
 import Success from "./Pages/Success";
+import Navbar from "./Components/Navbar";
+import Landing from "./Components/Landing";
 
 function App() {
   
 
   return (
     <>
-      <MainLayout />
+      {/* <Navbar /> */}
+      <Landing />
+      {/* <MainLayout />
       <HomePage />
       <Ckeckout />
       <PaymentPay />
-      <Success />
+      <Success /> */}
     </>
   )
 }
