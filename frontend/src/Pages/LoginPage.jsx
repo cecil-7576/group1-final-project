@@ -7,6 +7,19 @@ import { Link } from 'react-router-dom';
 
 function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleLogin = async () => {
+    const res = await fetch("http://localhost:5000/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await res.json();
+    console.log(data);
+  };
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#fff5e9] px-4">
@@ -25,6 +38,8 @@ function LoginPage() {
           <input
             type="text"
             placeholder="Email or Phone number"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full border border-gray-300 rounded-sm p-3 focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
         </div>
@@ -34,6 +49,8 @@ function LoginPage() {
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full border border-gray-300 rounded-sm p-3 focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
           <button
@@ -57,7 +74,9 @@ function LoginPage() {
         </div>
 
         {/* Login Button */}
-        <button className="mt-6 w-full bg-orange-500 text-white font-semibold py-3 hover:bg-orange-600 transition">
+        <button 
+        onClick={handleLogin}
+        className="mt-6 w-full bg-orange-500 text-white font-semibold py-3 hover:bg-orange-600 transition">
           Log In
         </button>
 

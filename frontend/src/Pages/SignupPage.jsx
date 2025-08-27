@@ -4,7 +4,27 @@ import { FaApple } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 function SignupPage() {
+
+  const [formData, setFormData] = useState({
+    surname: '',
+    firstName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData); // Here you’d send it to your backend
+  };
+
   return (
+    
     <div className="flex items-center justify-center min-h-screen bg-[#fff5e9] px-4">
         <div className="w-full max-w-lg bg-[#fff5e9] p-8">
         {/* Title */}
@@ -17,15 +37,22 @@ function SignupPage() {
         </p>
 
         {/* Name Fields */}
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit}>
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             type="text"
+            name='surname'
             placeholder="Surname"
+            value={formData.surname}
+            onChange={handleChange}
             className="border border-gray-300 p-3 rounded-sm w-full focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
           <input
             type="text"
+            name='first Name'
             placeholder="First Name"
+            value={formData.firstName}
+            onChange={handleChange}
             className="border border-gray-300 p-3 rounded-sm w-full focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
         </div>
@@ -34,7 +61,10 @@ function SignupPage() {
         <div className="mt-4">
           <input
             type="text"
+            name='email'
             placeholder="Email or Phone number"
+            value={formData.email}
+            onChange={handleChange}
             className="border border-gray-300 p-3 rounded-sm w-full focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
         </div>
@@ -43,7 +73,10 @@ function SignupPage() {
         <div className="mt-4">
           <input
             type="password"
+            name='password'
             placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
             className="border border-gray-300 p-3 rounded-sm w-full focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
         </div>
@@ -52,15 +85,21 @@ function SignupPage() {
         <div className="mt-4">
           <input
             type="password"
+            name='confirmPassword'
             placeholder="Confirm Password"
+            value={formData.confirmPassword}
+            onChange={handleChange}
             className="border border-gray-300 p-3 rounded-sm w-full focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
         </div>
 
         {/* Sign Up Button */}
-        <button className="mt-6 w-full bg-orange-500 text-white font-semibold py-3 hover:bg-orange-600 transition">
+        <button 
+        type='submit'
+        className="mt-6 w-full bg-orange-500 text-white font-semibold py-3 hover:bg-orange-600 transition">
           Sign Up
         </button>
+        </form>
 
         {/* Social Login */}
         <div className="flex justify-center gap-6 mt-6">
