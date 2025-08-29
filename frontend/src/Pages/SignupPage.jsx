@@ -49,8 +49,8 @@ function SignupPage() {
           />
           <input
             type="text"
-            name='first Name'
-            placeholder="First Name"
+            name='firstName'
+            placeholder="FirstName"
             value={formData.firstName}
             onChange={handleChange}
             className="border border-gray-300 p-3 rounded-sm w-full focus:outline-none focus:ring-2 focus:ring-orange-400"
@@ -86,7 +86,7 @@ function SignupPage() {
           <input
             type="password"
             name='confirmPassword'
-            placeholder="Confirm Password"
+            placeholder="ConfirmPassword"
             value={formData.confirmPassword}
             onChange={handleChange}
             className="border border-gray-300 p-3 rounded-sm w-full focus:outline-none focus:ring-2 focus:ring-orange-400"

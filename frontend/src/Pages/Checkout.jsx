@@ -1,19 +1,44 @@
 import React, {useState} from 'react';
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FaTruck, FaStore, FaCreditCard } from "react-icons/fa";
 
 function Checkout() {
 
   const location = useLocation();
+  const navigate = useNavigate();
   const { cart = [], subtotal = 0 } = location.state || {};
 
   const [delivery, setDelivery] = useState("ship");
   const [payment, setPayment] = useState("flutterwave");
 
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [stateName, setStateName] = useState("");
+  const [phone, setPhone] = useState("");
+
+
   const shipping = 2050;
   const vat = 3850;
   const total = subtotal + shipping + vat;
 
+  const handlePayNow = () => {
+    navigate("/payment", {
+      state: {
+        total,
+        cart,
+        payment,
+        delivery,
+        fullName,
+        email,
+        address,
+        city,
+        stateName,
+        phone,
+      },
+    });
+  };
 
   return (
     <div className="bg-[#fff5e9] min-h-screen px-4 md:px-12 lg:px-20 py-10">
@@ -78,13 +103,17 @@ function Checkout() {
                 <label htmlFor="">Full name</label>
                 <input
                   type="text"
-                  placeholder="Full name"
+                  placeholder="full Name"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                   className="w-full border border-gray-400 px-3 py-2 "
                 />
                 <label htmlFor="">Email</label>
                 <input
                   type="email"
                   placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full border border-gray-400 px-3 py-2"
                 />
 
@@ -97,8 +126,10 @@ function Checkout() {
 
                 <label htmlFor="">Adress</label>
                 <input
-                  type="text"
+                  type="address"
                   placeholder="Address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
                   className="w-full border border-gray-400 px-3 py-2 "
                 />
 
@@ -107,8 +138,10 @@ function Checkout() {
                       <label htmlFor="" className='mb-1'>City </label>
                         <input
                           id='city'
-                          type="text"
+                          type="city"
                           placeholder="City"
+                          value={city}
+                          onChange={(e) => setCity(e.target.value)}
                           className="border px-3 py-2 border-gray-400"
                         />
                   </div>
@@ -118,6 +151,8 @@ function Checkout() {
                       <input
                         type="text"
                         placeholder="State"
+                        value={stateName}
+                        onChange={(e) => setStateName(e.target.value)}
                         className="border px-3 py-2 border-gray-400"
                       />
                   </div>
@@ -135,6 +170,8 @@ function Checkout() {
                 <input
                   type="text"
                   placeholder="Phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   className="w-full border px-3 py-2 border-gray-400"
                 />
                 
@@ -185,7 +222,9 @@ function Checkout() {
               </div>
             </div>
 
-            <button className="w-full mt-6 bg-[#fb6605] text-white font-semibold py-3 rounded-md hover:bg-orange-600 transition">
+            <button 
+            onClick={handlePayNow} 
+            className="w-full mt-6 bg-[#fb6605] text-white font-semibold py-3 rounded-md hover:bg-orange-600 transition">
               Pay Now
             </button>
           </div>

@@ -2,13 +2,24 @@ import React from 'react'
 import logo from '../assets/images/logo.png';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 
 
 function Navbar({isHome, cart = []}) {
 
   const location= useLocation();
+
+  const navigate = useNavigate();
+
+  const handleHomeClick = (e) => {
+  e.preventDefault();
+  if (location.pathname === "/") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    navigate("/"); 
+  }
+};
 
   const hideAuthLinks = ["/login", "/signup"];
 
@@ -33,9 +44,11 @@ function Navbar({isHome, cart = []}) {
 
                     {/* Menu Links */}
                 <div className='hidden lg:flex space-x-6 text-base px-30 md:text-xl'>
-                      <NavLink to="/" className={linkClass}>Home</NavLink>
-                      {location.pathname !== "/" && (
-                       <NavLink to="/products" className={linkClass}>Shop</NavLink> 
+                      <NavLink to="/" 
+                      onClick={handleHomeClick}
+                      className={linkClass}>Home</NavLink>
+                     {location.pathname !== "/" && location.pathname !== "/about" && location.pathname !== "/contact" &&(
+                      <NavLink to="/products" className={linkClass}>Shop</NavLink>
                       )}
                       <NavLink to="/about" className={linkClass}>About</NavLink>
                       <NavLink to="/contact" className={linkClass}>Contact</NavLink>
