@@ -66,7 +66,9 @@ const handleRemove = (id) => {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<MainLayout cart={cart}/>}>
-    <Route index element={<HomePage />}/>
+    <Route index element={<HomePage key="home" scrollTo="top"/>}/>
+    <Route path="about" element={<HomePage scrollTo="footer" />} />
+    <Route path="contact" element={<HomePage scrollTo="footer" />} />
     <Route path='products' element={<ProductList onAddToCart={addToCart}/>} />
     <Route path='login' element={<LoginPage />} />
     <Route path='signup' element={<SignupPage />} />
@@ -77,6 +79,7 @@ const router = createBrowserRouter(
 
     <Route path='product/:id' element={<ProductDetails addToCart={addToCart} />} />
     <Route path='/Checkout' element={<Checkout />} />
+    <Route path='/payment' element={<PaymentPay />} />
     {/* <Route path='/' element={<ProductList onAddToCart={handleAddToCart} />} /> */}
   
     </Route>

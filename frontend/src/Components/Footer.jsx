@@ -4,7 +4,7 @@ import logo2 from '../assets/images/logo2.png';
 
 function Footer() {
   return (
-    <footer className="bg-[#ffb07c] text-black py-6">
+    <footer id="footer" className="bg-[#ffb07c] text-black py-6">
   <div className="max-w-7xl mx-auto flex flex-col w-full">
     
     {/* Top Section */}
@@ -21,6 +21,7 @@ function Footer() {
       <div className="flex flex-col items-center md:items-center lg:mr-50">
         <h3 className="font-semibold mb-2">Contact Us</h3>
         <p>meskincare@gmail.com</p>
+        <p>070673384367</p>
       </div>
 
       
