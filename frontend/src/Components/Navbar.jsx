@@ -21,7 +21,7 @@ function Navbar({isHome, cart = []}) {
   }
 };
 
-  const hideAuthLinks = ["/login", "/signup"];
+  // const hideAuthLinks = ["/login", "/signup"];
 
   const linkClass = ({ isActive }) =>
   isActive
@@ -55,7 +55,7 @@ function Navbar({isHome, cart = []}) {
                 </div>
                 </div>
                   
-                {!hideAuthLinks.includes(location.pathname) && (
+                {location.pathname === "/" && (
                   <div className='flex space-x-3'>
                   <NavLink to="/login" className={linkClass2}>Login</NavLink>
                   <NavLink to="/signup" className={linkClass2}>Sign Up</NavLink>

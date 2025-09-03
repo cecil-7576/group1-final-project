@@ -24,7 +24,7 @@ function SignupPage() {
   };
 
   return (
-    
+     <>
     <div className="flex items-center justify-center min-h-screen bg-[#fff5e9] px-4">
         <div className="w-full max-w-lg bg-[#fff5e9] p-8">
         {/* Title */}
@@ -108,6 +108,8 @@ function SignupPage() {
         </div>
       </div>
     </div>
+    {/* <Footer id="footer" /> */}
+   </>  
   )
 }
 

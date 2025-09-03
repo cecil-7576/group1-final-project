@@ -18,7 +18,7 @@ function HomePage({ scrollTo }) {
   return (
     <>
         <Landing />
-        <Footer id="footer" />
+        {/* <Footer id="footer" /> */}
         {/* <ProductList /> */}
         
     </>

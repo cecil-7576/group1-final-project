@@ -10,7 +10,7 @@ function MainLayout({cart}) {
         <main className="flex-grow">
           <Outlet />
       </main>
-        
+        <Footer id="footer" /> 
         
     </div>
   )

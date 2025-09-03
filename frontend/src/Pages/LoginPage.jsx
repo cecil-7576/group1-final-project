@@ -4,6 +4,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import Footer from '../Components/Footer';
 
 function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
@@ -22,6 +23,7 @@ function LoginPage() {
 
 
   return (
+     <>
     <div className="flex items-center justify-center min-h-screen bg-[#fff5e9] px-4">
         <div className="w-full max-w-md bg-[#fff5e9] p-8">
         {/* Title */}
@@ -87,6 +89,8 @@ function LoginPage() {
         </div>
       </div>
     </div>
+    {/* <Footer id="footer" /> */}
+   </>  
   )
 }
 
